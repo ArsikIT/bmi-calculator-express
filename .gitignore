@@ -1,0 +1,12 @@
+﻿node_modules/
+.env
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+
+npm-debug.log*
+yarn-error.log*
+
+Thumbs.db
+.DS_Store
