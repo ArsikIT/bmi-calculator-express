@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true })); // Middleware to parse html for
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from 'public' file
 
 // POST
-app.post("/caculate-bmi", (req, res) => {
+app.post("/calculate-bmi", (req, res) => {
     const weight = parseFloat(req.body.weight);
     const height = parseFloat(req.body.height);
 
@@ -20,12 +20,12 @@ app.post("/caculate-bmi", (req, res) => {
             <a href="/">Go back</a>
     `)
 
-}
+    }
 
 // BMI Calculation
 
-const bmi = weight / (height * height);
-const bmiValue = bmi.toFixed(2);
+    const bmi = weight / (height * height);
+    const bmiValue = bmi.toFixed(2);
 
 
     let category = "";
@@ -48,20 +48,31 @@ const bmiValue = bmi.toFixed(2);
     // Response
 
     res.send(`
-        <html>
-        <head>
-            <title>BMI Result</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>BMI Result</title>
+        <link rel="stylesheet" href="/css/style.css">
         </head>
-        <body style="font-family: Arial; text-align: center; margin-top: 50px;">
+        <body>
+            <div class="container result-box" style="border-left: 5px solid ${color};">
             <h1>BMI Result</h1>
+
             <p>Your BMI: <strong>${bmiValue}</strong></p>
-            <p style="color:${color}; font-size:20px;">
-                Category: <strong>${category}</strong>
+
+            <p class="category-result">
+                Category:
+                <span style="color:${color}; font-weight:bold;">
+                    ${category}
+                </span>
             </p>
-            <a href="/">Calculate again</a>
+
+        <a href="/" class="btn-back">Calculate again</a>
+            </div>
         </body>
-        </html>
-    `);
+    </html>
+  `);
 });
 
 //Server start
