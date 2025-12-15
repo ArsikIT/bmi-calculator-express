@@ -1,29 +1,30 @@
-/* General styles for the entire page */
+/* Global page styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f6; /* Light gray background */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #e3f2fd, #f1f8ff);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Occupy the full viewport height */
+    min-height: 100vh;
     margin: 0;
 }
 
-/* Styles for the main container (calculator card) */
+/* Main container  */
 .container {
     background-color: #ffffff;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    max-width: 560px;
     width: 100%;
     text-align: center;
 }
 
-/* Heading */
+
+/*  Headings */
 h1 {
-    color: #333333;
-    font-size: 1.5em;
+    color: #333;
+    font-size: 1.6em;
     margin-bottom: 25px;
 }
 
@@ -34,114 +35,143 @@ h1 {
     text-align: left;
 }
 
-/* Styles for labels */
-label {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555555;
-}
-
-/* Styles for input fields */
-input[type="number"] {
-    padding: 10px;
+/* Input groups */
+.input-group {
     margin-bottom: 20px;
-    border: 1px solid #dddddd;
-    border-radius: 6px;
-    font-size: 1em;
-    transition: border-color 0.3s;
 }
 
-input[type="number"]:focus {
-    border-color: #007bff; /* Blue border on focus */
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Input wrapper */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-wrapper:focus-within {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
+}
+
+/*  Input */
+.input-wrapper input {
+    flex: 1;
+    height: 100%;
+    border: none;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    background: transparent;
+    font-size: 1em;
+    padding: 0;
 }
 
-/* Styles for the submit button */
-button[type="submit"] {
-    background-color: #007bff; /* Blue color */
-    color: white;
-    padding: 12px 20px;
+/* Remove number arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Units */
+.unit {
+    margin-left: 10px;
+    font-size: 0.95em;
+    color: #777;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/*  Buttons */
+button[type="submit"],
+.btn-back {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 12px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
     margin-top: 10px;
-    transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+button[type="submit"]:hover,
+.btn-back:hover {
+    background-color: #0056b3;
 }
 
-/* =======================================
-   Styles for the RESULT page (from Express)
-   ======================================= */
+/* Result page */
+.container.result-box {
+    max-width: 560px;
+    padding: 40px 50px;
+    border-radius: 16px;
+}
 
-/* Specific container for displaying the result */
+/* Result card layout */
 .result-box {
     text-align: left;
-    margin-top: 0 !important;
-    border-left-width: 5px;
-    border-left-style: solid;
-    padding: 20px;
+    border-left: 6px solid;
+    padding: 32px 36px;
 }
 
-.result-box h2 {
-    text-align: left;
-    margin-top: 0;
-    font-size: 1.4em;
+/* Title */
+.result-box h1 {
+    font-size: 2em;
+    color: #222;
+    margin-bottom: 25px;
+}
+
+/* Result text */
+.result-box p {
+    font-size: 1.25em;
+    margin: 18px 0;
     color: #333;
 }
 
-.result-box p {
-    font-size: 1.1em;
-    margin: 10px 0;
+/* BMI number emphasis */
+.result-box p strong {
+    font-size: 1.3em;
+    font-weight: 700;
 }
 
-/* Styles for the "Calculate Again" button */
-.result-box button {
-    width: 100%; 
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #6c757d; /* Gray color for return */
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
+/* Category line */
+.category-result {
+    margin-top: 10px;
 }
 
-.result-box button:hover {
-    background-color: #5a6268;
-}
-
-/* Styles for the error message */
-.error-message {
-    color: #dc3545; /* Red color */
-    font-weight: bold;
-    text-align: center;
-    padding: 10px 0;
-}
-
-/* Styles for the result category (e.g., "Normal weight") */
+/* Category text */
 .category-result span {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+/* Action button */
+.result-box .btn-back {
+    margin-top: 35px;
+    padding: 16px;
     font-size: 1.2em;
+    border-radius: 10px;
 }
 
-.btn-back {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    width: 100%;
-    text-align: center;
-}
-
-.btn-back:hover {
-    background-color: #0056b3;
+/* Subtle card feel */
+.container.result-box {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
